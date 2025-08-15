@@ -9,15 +9,9 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./system.nix
-    ./nvidia.nix
+    ./desktop/nvidia.nix
+    ./desktop/desktop.nix
   ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   security.polkit.enable = true;
 
@@ -98,12 +92,6 @@
     ];
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -121,7 +109,6 @@
     # i2c-tools
     btop
     vivaldi
-    lutris
     git-repo
     pkgs.nixfmt-rfc-style
     gparted
