@@ -10,7 +10,7 @@
 
   security.polkit.enable = true;
 
-  networking.hostName = "nixos"; 
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Paris";
@@ -32,8 +32,14 @@
   services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
-    layout = "us";
-    # variant = "us_qwerty-fr";
+    layout = "us_qwerty-fr";
+    extraLayouts = {
+      us_qwerty-fr = {
+        description = "";
+        languages = [ "eng" ];
+        symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
+      };
+    };
   };
 
   services.printing.enable = true;
@@ -84,28 +90,11 @@
     sbctl
     usbutils
     stremio
-    qwerty-fr
     android-tools
-    megacmd
+    megasync
+    xournalpp
+    qwerty-fr
   ];
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -114,5 +103,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
