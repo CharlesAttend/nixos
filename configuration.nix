@@ -60,6 +60,7 @@
       "networkmanager"
       "wheel"
       "i2c"
+      "docker"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -95,6 +96,10 @@
     xournalpp
     qwerty-fr
   ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
