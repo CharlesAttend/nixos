@@ -90,7 +90,7 @@
     logseq
     sbctl
     usbutils
-    stremio
+    # (pkgs.callPackage ./packages/stremio-linux-shell.nix {})
     android-tools
     megasync
     xournalpp
