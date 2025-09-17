@@ -78,6 +78,7 @@
     killall
     ddcutil
     vesktop
+    signal-desktop
     git
     btop
     vivaldi
