@@ -14,5 +14,6 @@
   environment.systemPackages = with pkgs; [
     lutris
     cura-appimage
+    prismlauncher
   ];
 }
