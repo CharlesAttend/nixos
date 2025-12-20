@@ -71,6 +71,23 @@
       kdePackages.kate
     ];
   };
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    enableCompletion = true;
+    enableBashCompletion = true;
+    ohMyZsh.enable = true;
+#    ohMyZsh.plugins = [ "git" ];
+#    ohMyZsh.theme = "frisk";
+    syntaxHighlighting.enable = true;
+  };
+  programs.starship = {
+    enable = true;
+    presets = ["pastel-powerline"];
+  };
+  programs.fzf.fuzzyCompletion = true;
+
+
 
   nixpkgs.config.allowUnfree = true;
 
