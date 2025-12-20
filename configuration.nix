@@ -84,7 +84,10 @@
     vivaldi
     git-repo
     pkgs.nixfmt-rfc-style
+    
     gparted
+    ntfs3g
+    
     bluetui
     vlc
     vscode
