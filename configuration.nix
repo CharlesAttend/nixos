@@ -61,6 +61,7 @@
   users.users.charles = {
     isNormalUser = true;
     description = "Charles";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -76,9 +77,10 @@
     autosuggestions.enable = true;
     enableCompletion = true;
     enableBashCompletion = true;
+    histSize = 10000;
     ohMyZsh.enable = true;
-#    ohMyZsh.plugins = [ "git" ];
-#    ohMyZsh.theme = "frisk";
+    ohMyZsh.plugins = [ "git" "git-auto-fetch" "dotenv" "dirhistory" "uv" ];
+    ohMyZsh.theme = "frisk";
     syntaxHighlighting.enable = true;
   };
   programs.starship = {
@@ -87,6 +89,7 @@
   };
   programs.fzf.fuzzyCompletion = true;
 
+  programs.ssh.startAgent = true;
 
 
   nixpkgs.config.allowUnfree = true;
@@ -106,6 +109,8 @@
     vivaldi
     git-repo
     pkgs.nixfmt-rfc-style
+    zellij
+    pay-respects
     
     gparted
     ntfs3g
@@ -121,7 +126,12 @@
     megasync
     xournalpp
     qwerty-fr
+    anytype
   ];
+
+
+ 
+
 
   virtualisation.docker = {
     enable = true;
