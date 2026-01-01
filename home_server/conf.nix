@@ -19,27 +19,6 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
-  };
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "gb";
@@ -58,21 +37,12 @@
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    git
-    gcc
-    gnumake
     kitty
   ];
   virtualisation.docker.enable = true;
-  services.vscode-server.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -80,21 +50,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    enableCompletion = true;
-    enableBashCompletion = true;
-    ohMyZsh.enable = true;
-#    ohMyZsh.plugins = [ "git" ];
-#    ohMyZsh.theme = "frisk";
-    syntaxHighlighting.enable = true;
-  };
-  programs.starship = {
-    enable = true;
-    presets = ["pastel-powerline"];
-  };
-  programs.fzf.fuzzyCompletion = true;
 
   # List services that you want to enable:
 
@@ -117,7 +72,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable OpenGL
   hardware.graphics = {
