@@ -6,19 +6,6 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.loader.grub = {
-  #   devices = [ "nodev" ];
-  #   efiSupport = true;
-  #   useOSProber = true;
-  #   extraEntries = ''
-  #     menuentry "Windows" --class windows --class os {
-  #       insmod part_gpt
-  #       insmod fat
-  #       search --no-floppy --fs-uuid --set=root 770D-77B0
-  #       chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-  #     }
-  #   '';
-  # };
 
   boot.loader.limine = {
     enable = true;
@@ -47,5 +34,4 @@
     };
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

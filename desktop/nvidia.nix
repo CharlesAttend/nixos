@@ -7,9 +7,15 @@
 }:
 
 {
+  boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-nvidia_gpu"];
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [                                                                   
+      nvidia-vaapi-driver                                                                          
+      libvdpau-va-gl                                                                               
+    ];    
   };
 
   # Load nvidia drisver for Xorg and Wayland
