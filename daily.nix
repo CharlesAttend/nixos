@@ -19,6 +19,10 @@
     printing.enable = true;
   };
 
+  fonts.packages = with pkgs; [
+   (nerdfonts.override { fonts = [ "Lilex" "DroidSansMono" ]; })
+  ];
+  
   environment.systemPackages = with pkgs; [
     vivaldi
     vscode
