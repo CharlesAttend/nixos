@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./base.nix
-    ./daily.nix
-    ./desktop/hardware.nix
-    ./desktop/nvidia.nix
-    ./desktop/desktop.nix
-    ./desktop/boot.nix
+    ../base.nix
+    ../daily.nix
+    ./hardware.nix
+    ./nvidia.nix
+    ./desktop.nix
+    ./boot.nix
   ];
 
   # This value determines the NixOS release from which the default
