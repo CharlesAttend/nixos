@@ -1,30 +1,49 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "btusb" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "btusb"
+  ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/861510f3-2b4e-49b4-9df8-2fcc1df49788";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/861510f3-2b4e-49b4-9df8-2fcc1df49788";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E2D5-18D5";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/f5356871-c00b-4fb5-9564-85f0987e9342"; }
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/E2D5-18D5";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
     ];
+  };
+
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/f5356871-c00b-4fb5-9564-85f0987e9342"; }
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -51,7 +70,7 @@
       };
     };
   };
-    # This is to fix frequent Bluetooth audio dropouts.
+  # This is to fix frequent Bluetooth audio dropouts.
   boot.extraModprobeConfig = ''
     # Keep Bluetooth coexistence disabled for better BT audio stability
     options iwlwifi bt_coex_active=0

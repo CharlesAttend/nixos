@@ -3,30 +3,22 @@
 {
   networking.hostName = "nixos";
 
-  security.polkit.enable = true;
-  security.rtkit.enable = true;
-  services.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
   };
 
-  services.blueman.enable = true;
-  services.printing.enable = true;
+  services = {
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
 
-
-  users.users.charles = {
-    isNormalUser = true;
-    description = "Charles";
-    shell = pkgs.zsh;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "i2c"
-      "docker"
-    ];
+    blueman.enable = true;
+    printing.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

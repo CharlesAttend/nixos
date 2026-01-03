@@ -15,7 +15,24 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  users.users.charles = {
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "i2c"
+      "docker"
+    ];
+  };
+
+
   networking.networkmanager.enable = true;
+  # Use Quad9 for DNS
+  networking.nameservers = [
+    "9.9.9.9"
+    "149.112.112.112"
+  ];
 
   # CLI shell configuration
   programs.zsh = {
@@ -36,6 +53,7 @@
   programs.fzf.fuzzyCompletion = true;
   programs.neovim.enable = true;
   programs.ssh.startAgent = true;
+  services.fwupd.enable = true;
 
   # Base packages
   environment.systemPackages = with pkgs; [
@@ -53,12 +71,30 @@
     qwerty-fr
     gcc
     gnumake
+    ffmpeg
   ];
   
   virtualisation.docker = {
     enable = true;
   };
-  
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.auto-optimise-store = true;
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
 }
