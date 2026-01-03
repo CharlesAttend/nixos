@@ -12,6 +12,14 @@
           ./desktop/configuration.nix
         ];
       };
+
+      hp-ina = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hp-ina/configuration.nix
+        ];
+      };
     };
   };
 }
