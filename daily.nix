@@ -1,28 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
-
-  services = {
-    pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-
-    blueman.enable = true;
-    printing.enable = true;
-  };
-
-  fonts.packages = with pkgs; [
-   (nerdfonts.override { fonts = [ "Lilex" "DroidSansMono" ]; })
-  ];
-  
   environment.systemPackages = with pkgs; [
     vivaldi
     vscode
@@ -43,4 +21,26 @@
     megasync
     pkgs.nixfmt-rfc-style
   ];
+
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
+
+  services = {
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    blueman.enable = true;
+    printing.enable = true;
+  };
+
+  fonts.packages = with pkgs; [
+   (nerdfonts.override { fonts = [ "Lilex" "DroidSansMono" ]; })
+  ]; 
 }
