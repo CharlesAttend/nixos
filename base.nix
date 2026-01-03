@@ -26,7 +26,6 @@
     ];
   };
 
-
   networking.networkmanager.enable = true;
   # Use Quad9 for DNS
   networking.nameservers = [
@@ -42,13 +41,19 @@
     enableBashCompletion = true;
     histSize = 10000;
     ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" "git-auto-fetch" "dotenv" "dirhistory" "uv" ];
+    ohMyZsh.plugins = [
+      "git"
+      "git-auto-fetch"
+      "dotenv"
+      "dirhistory"
+      "uv"
+    ];
     ohMyZsh.theme = "frisk";
     syntaxHighlighting.enable = true;
   };
   programs.starship = {
     enable = true;
-    presets = ["pastel-powerline"];
+    presets = [ "pastel-powerline" ];
   };
   programs.fzf.fuzzyCompletion = true;
   programs.neovim.enable = true;
@@ -73,15 +78,8 @@
     gnumake
     ffmpeg
   ];
-  
-  virtualisation.docker = {
-    enable = true;
-  };
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+  virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   nix = {

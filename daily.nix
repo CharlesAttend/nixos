@@ -6,15 +6,15 @@
     vscode
     gparted
     vlc
-    (pkgs.callPackage ./packages/stremio-linux-shell.nix {})
-    
+    (pkgs.callPackage ./packages/stremio-linux-shell.nix { })
+
     logseq
     xournalpp
     anytype
-    
+
     vesktop
     signal-desktop
-    
+
     bluetui
     ntfs3g
     android-tools
@@ -40,7 +40,17 @@
     printing.enable = true;
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   fonts.packages = with pkgs; [
-   (nerdfonts.override { fonts = [ "Lilex" "DroidSansMono" ]; })
-  ]; 
+    (nerdfonts.override {
+      fonts = [
+        "Lilex"
+        "DroidSansMono"
+      ];
+    })
+  ];
 }
