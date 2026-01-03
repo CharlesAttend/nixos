@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  networking.hostName = "nixos";
-
   security = {
     polkit.enable = true;
     rtkit.enable = true;
