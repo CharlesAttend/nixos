@@ -20,6 +20,14 @@
           ./hp-ina/configuration.nix
         ];
       };
+
+      homeserver = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./homeserver/configuration.nix
+        ];
+      };
     };
   };
 }
