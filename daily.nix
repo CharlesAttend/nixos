@@ -46,11 +46,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "Lilex"
-        "DroidSansMono"
-      ];
-    })
+    nerd-fonts.lilex
+    nerd-fonts.droid-sans-mono
   ];
 }
