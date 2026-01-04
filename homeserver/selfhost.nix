@@ -8,7 +8,7 @@
      port = 2283;
      secretsFile = "/run/secrets/immich";
      environment = {
-       # "DB_DATA_LOCATION" = "";
+       # "DB_DATA_LOCATION" = "/mnt/data/immich";
      };
      openFirewall = true;
   };

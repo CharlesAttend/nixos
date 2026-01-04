@@ -1,33 +1,43 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    disko.url = "github:nix-community/disko/latest";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ...}@inputs: {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./desktop/configuration.nix
-        ];
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      disko,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./desktop/configuration.nix
+          ];
+        };
 
-      hp-ina = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hp-ina/configuration.nix
-        ];
-      };
+        hp-ina = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hp-ina/configuration.nix
+          ];
+        };
 
-      homeserver = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./homeserver/configuration.nix
-        ];
+        homeserver = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./homeserver/configuration.nix
+            disko.nixosModules.disko
+          ];
+        };
       };
     };
-  };
 }
