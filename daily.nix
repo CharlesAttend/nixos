@@ -19,6 +19,7 @@
     ntfs3g
     android-tools
     megasync
+    ente-auth
     pkgs.nixfmt-rfc-style
   ];
 
