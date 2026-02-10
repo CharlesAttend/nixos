@@ -8,9 +8,11 @@
      port = 2283;
      secretsFile = "/run/secrets/immich";
      environment = {
-       # "DB_DATA_LOCATION" = "/mnt/data/immich";
      };
      openFirewall = true;
+     mediaLocation = "/mnt/data/immich/media";
   };
+  services.immich.accelerationDevices = null; # all devices
   users.users.immich.extraGroups = [ "video" "render" ];
+  user.users.charles.extraGroups = [ "immich" ];
 }
