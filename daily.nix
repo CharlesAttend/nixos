@@ -14,6 +14,7 @@
 
     vesktop
     signal-desktop
+    teams-for-linux
 
     bluetui
     ntfs3g
