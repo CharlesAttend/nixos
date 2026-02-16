@@ -68,6 +68,7 @@
     killall
     ddcutil
     git
+    lazygit
     btop
     zellij
     pay-respects # fuck cmd
