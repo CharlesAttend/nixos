@@ -9,7 +9,7 @@
     ../base.nix
     ./hardware.nix
     ./homeserver.nix
-#    ./power_management.nix
+    ./power_management.nix
     # ./selfhost.nix
     ./boot.nix
     ./disk-config.nix
