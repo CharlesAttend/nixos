@@ -15,6 +15,7 @@
     vesktop
     signal-desktop
     teams-for-linux
+    beeper
 
     bluetui
     ntfs3g
