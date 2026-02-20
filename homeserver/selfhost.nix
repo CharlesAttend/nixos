@@ -6,11 +6,11 @@
     enable = true;
     machine-learning.enable = true;
     port = 2283;
-    secretsFile = "/run/secrets/immich";
     openFirewall = true;
     host = "0.0.0.0";
     mediaLocation = "/mnt/data/immich/media";
     accelerationDevices = null; # all devices
+    environment = { TZ = "Europe/Paris"; };
   };
   users.users.immich.extraGroups = [ "video" "render" ];
   users.users.charles.extraGroups = [ "immich" ];
@@ -30,7 +30,8 @@
       ];
     };
   };
+
   networking.firewall.allowedTCPPorts = [
-    8123   
+    8123 # Homeassistant
   ];
 } 
