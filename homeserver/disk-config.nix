@@ -111,7 +111,7 @@
         datasets = {
           data = {
             type = "zfs_fs";
-            mountpoint = "/mnt/data";
+            options.mountpoint = "/mnt/data";
           };
         };
       };
@@ -125,7 +125,7 @@
         datasets = {
           data = {
             type = "zfs_fs";
-            mountpoint = "/mnt/backup";
+            options.mountpoint = "/mnt/backup";
           };
         };
       };
