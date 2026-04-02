@@ -105,13 +105,12 @@
         mode = "mirror";
         rootFsOptions = {
           compression = "zstd";
-          canmount = "off";
         };
 
         datasets = {
           data = {
             type = "zfs_fs";
-            mountpoint = "/mnt/data";
+            options.mountpoint = "/mnt/data";
           };
         };
       };
@@ -120,7 +119,6 @@
         type = "zpool";
         rootFsOptions = {
           compression = "zstd";
-          canmount = "off";
         };
         datasets = {
           data = {
@@ -131,4 +129,5 @@
       };
     };
   };
+  boot.zfs.extraPools = [ "data" "backup" ];
 }
