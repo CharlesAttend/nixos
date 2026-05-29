@@ -3,6 +3,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -10,6 +15,8 @@
       self,
       nixpkgs,
       disko,
+      catppuccin,
+      home-manager,
       ...
     }@inputs:
     {
@@ -19,6 +26,14 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./desktop/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.charles = ./modules/daily/home.nix;
+            }
+
           ];
         };
 
@@ -27,6 +42,13 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hp-ina/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.charles = ./modules/daily/home.nix;
+            }
           ];
         };
 
