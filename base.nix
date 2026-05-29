@@ -69,6 +69,7 @@
     ddcutil
     git
     lazygit
+    ripgrep
     btop
     zellij
     pay-respects # fuck cmd
