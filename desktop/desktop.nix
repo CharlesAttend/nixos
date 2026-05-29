@@ -9,17 +9,7 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.xserver.enable = true;
-  services.xserver.xkb = {
-    layout = "us_qwerty-fr";
-    extraLayouts = {
-      us_qwerty-fr = {
-        description = "";
-        languages = [ "eng" ];
-        symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
-      };
-    };
-  };
-
+  
   # Remote control
   services.openssh.enable = true;
   services.fail2ban.enable = true;

@@ -82,6 +82,16 @@
     gnumake
     ffmpeg
   ];
+  services.xserver.xkb = {
+    layout = "us_qwerty-fr";
+    extraLayouts = {
+      us_qwerty-fr = {
+        description = "";
+        languages = [ "eng" ];
+        symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
+      };
+    };
+  };
 
   virtualisation.docker.enable = true;
 
