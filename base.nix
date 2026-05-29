@@ -26,6 +26,7 @@
     ];
     initialHashedPassword = "$y$j9T$2OaLLN8PsTRFwmTRgR5FK0$gvtDFywTsVDQCizdkGYMDg7jov.JhBywQ7UHZEOydL6";
   };
+  programs.gnupg.agent.enable = true;
 
   networking.networkmanager.enable = true;
   # Use Quad9 for DNS
