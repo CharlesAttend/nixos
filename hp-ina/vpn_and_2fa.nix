@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     gpclient
+    (pkgs.callPackage ../packages/trustbuilder_appimage.nix { })
   ];
   
   environment.etc."ssl/openssl-legacy.cnf".text = ''

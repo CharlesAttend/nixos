@@ -6,7 +6,7 @@
     ../daily.nix
     ./hardware.nix
     ./origin_conf.nix
-    ./vpn.nix
+    ./vpn_and_2fa.nix
   ];
   networking.hostName = "hp-ina";
 }
