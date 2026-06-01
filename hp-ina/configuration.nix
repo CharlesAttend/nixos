@@ -4,6 +4,7 @@
   imports = [
     ../base.nix
     ../daily.nix
+    ../modules/hyprland/hyprland.nix
     ./hardware.nix
     ./origin_conf.nix
     ./games.nix
