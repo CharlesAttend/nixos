@@ -11,5 +11,8 @@
     ./vpn_and_2fa.nix
     ./displaylink.nix
   ];
+  security.pki.certificateFiles = [
+    ./certs/bundle.crt
+  ];
   networking.hostName = "hp-ina";
 }
