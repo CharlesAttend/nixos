@@ -38,8 +38,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-
-    blueman.enable = true;
     printing.enable = true;
   };
 
@@ -47,6 +45,7 @@
     enable = true;
     enable32Bit = true;
   };
+  hardware.bluetooth.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.lilex
