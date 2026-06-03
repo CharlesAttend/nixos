@@ -22,6 +22,7 @@
     wl-clip-persist
     hyprsunset
     wpaperd
+    brightnessctl
   ];
 
   # Optional, hint Electron apps to use Wayland:
