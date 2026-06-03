@@ -16,6 +16,7 @@
     hyprpicker
     hyprshot
     hyprcursor
+    hyprpolkitagent
     nautilus
     clipse
     wl-clip-persist
