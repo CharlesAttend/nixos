@@ -7,6 +7,7 @@
     gparted
     vlc
     (pkgs.callPackage ./packages/stremio-linux-shell.nix { })
+    (pkgs.callPackage ./packages/sunsama.nix { })
 
     logseq
     xournalpp
