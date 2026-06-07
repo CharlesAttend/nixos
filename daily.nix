@@ -34,6 +34,8 @@
     # nvim plugins
     pkgs.nixfmt-rfc-style
   ];
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false; # Use program.ssh.start-agent
 
   security = {
     polkit.enable = true;
