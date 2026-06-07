@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    factorio-space-age
+    # factorio-space-age
   ];
   # system.extraDependencies = [
   #   factorio.src
