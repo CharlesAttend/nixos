@@ -6,7 +6,6 @@
     ../daily.nix
     ../modules/hyprland/hyprland.nix
     ./hardware.nix
-    ./origin_conf.nix
     ./games.nix
     ./taf.nix
     ./vpn_and_2fa.nix
@@ -24,4 +23,6 @@
         KEYBOARD_KEY_01=capslock
   '';
   networking.hostName = "hp-ina";
+
+  system.stateVersion = "25.11"; # don't touch that bro 
 }
