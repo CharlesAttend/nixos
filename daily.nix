@@ -2,27 +2,34 @@
 
 {
   environment.systemPackages = with pkgs; [
+    kitty
     vivaldi
     vscode
     gparted
     vlc
-    (pkgs.callPackage ./packages/stremio-linux-shell.nix { })
-    (pkgs.callPackage ./packages/sunsama.nix { })
+    #(pkgs.callPackage ./packages/stremio-linux-shell.nix { })
 
     logseq
     xournalpp
     anytype
+    (pkgs.callPackage ./packages/sunsama.nix { })
+    (pkgs.callPackage ./packages/notion-electron.nix { })
 
     vesktop
     signal-desktop
     teams-for-linux
     beeper
+    spotify
 
+    pavucontrol
     bluetui
     ntfs3g
     android-tools
     megasync
     ente-auth
+    cura-appimage
+
+    # nvim plugins
     pkgs.nixfmt-rfc-style
   ];
 

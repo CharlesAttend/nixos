@@ -66,22 +66,35 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
+    unzip
+    ncdu
     killall
     ddcutil
     git
+
     lazygit
     ripgrep
+    fd
+    ghostscript_headless # PDF render in nvim 
+
+    uv
+    python3
+
     btop
     zellij
     pay-respects # fuck cmd
     usbutils # lsusb
-    uv
     sbctl # Secure boot key manager
     qwerty-fr
     gcc
     gnumake
     ffmpeg
+    opencode
+    lsof # With opencode lazyvim plugin
+    claude-code
   ];
+  services.xserver.enable = true;
+
   services.xserver.xkb = {
     layout = "us_qwerty-fr";
     extraLayouts = {
@@ -92,7 +105,7 @@
       };
     };
   };
-
+  
   virtualisation.docker.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "poweroff";

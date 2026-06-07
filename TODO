@@ -3,3 +3,4 @@
 [] auto remote backup chez alexandre
 [] secrets management like https://github.com/paholg/dotfiles/tree/main
 [] https://github.com/alangrainger/immich-public-proxy
+[] Organised nvim package better: exemple : I don't want pdf viewer in base config
