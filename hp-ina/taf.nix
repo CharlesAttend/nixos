@@ -8,6 +8,9 @@
     kubectl
     kubelogin-oidc
     lens
+    kubernetes-helm
+
+    awscli2
 
     bun
     nodejs_24
