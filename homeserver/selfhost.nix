@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Immich
@@ -10,20 +15,29 @@
     host = "0.0.0.0";
     mediaLocation = "/mnt/data/immich/media";
     accelerationDevices = null; # all devices
-    environment = { TZ = "Europe/Paris"; };
+    environment = {
+      TZ = "Europe/Paris";
+    };
   };
-  users.users.immich.extraGroups = [ "video" "render" ];
+  users.users.immich.extraGroups = [
+    "video"
+    "render"
+  ];
   users.users.charles.extraGroups = [ "immich" ];
 
   # Homeassistant
   virtualisation.oci-containers = {
     backend = "docker";
     containers.homeassistant = {
-      volumes = [ "home-assistant:/config" "/run/udev:/run/udev:ro" "/dev:/dev" ];
+      volumes = [
+        "home-assistant:/config"
+        "/run/udev:/run/udev:ro"
+        "/dev:/dev"
+      ];
       environment.TZ = "Europe/Berlin";
       # Note: The image will not be updated on rebuilds, unless the version label changes
       image = "ghcr.io/home-assistant/home-assistant:stable";
-      extraOptions = [ 
+      extraOptions = [
         # Use the host network namespace for all socket
         "--network=host"
         "--device-cgroup-rule=c 188:* rmw"
@@ -31,7 +45,28 @@
     };
   };
 
+  services.paperless = {
+    enable = true;
+  };
+
+  sops.secrets.cloudflare-traefik = {
+    sopsFile = ../secrets/cloudflare-traefik.env;
+    format = "dotenv";
+    # restartunits = [ "traefik.service" ];
+  };
+  services.traefik = {
+    enable = true;
+    staticConfigOptions = {
+      certificatesResolvers.letsencrypt.acme = {
+        email = "charles.vin@outlook.fr";
+        dnschallenge.provider = "cloudflare";
+      };
+    };
+    # environmentFiles = sops.secrets.cloudflare-traefik.path;
+  };
   networking.firewall.allowedTCPPorts = [
     8123 # Homeassistant
+    80
+    443
   ];
-} 
+}

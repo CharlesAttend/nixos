@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [./bugfixes.nix];
-  
+  imports = [ ./bugfixes.nix ];
+
   environment.systemPackages = with pkgs; [
     kitty
     vivaldi
