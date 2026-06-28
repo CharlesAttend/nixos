@@ -61,6 +61,7 @@
   };
   programs.fzf.fuzzyCompletion = true;
   programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
   programs.ssh.startAgent = true;
   services.fwupd.enable = true;
 
@@ -77,7 +78,7 @@
     lazygit
     ripgrep
     fd
-    ghostscript_headless # PDF render in nvim 
+    ghostscript_headless # PDF render in nvim
 
     uv
     python3
@@ -107,7 +108,7 @@
       };
     };
   };
-  
+
   virtualisation.docker.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "poweroff";
