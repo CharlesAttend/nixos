@@ -9,7 +9,7 @@
     vscode
     gparted
     vlc
-    #(pkgs.callPackage ./packages/stremio-linux-shell.nix { })
+    stremio-linux-shell
 
     #logseq
     xournalpp
