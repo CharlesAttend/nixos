@@ -4,10 +4,12 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.url = "github:catppuccin/nix/release-26.05";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -17,6 +19,7 @@
       disko,
       catppuccin,
       home-manager,
+      sops-nix,
       ...
     }@inputs:
     {
@@ -26,13 +29,14 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./desktop/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.charles = ./modules/daily/home.nix;
-            }
+            sops-nix.nixosModules.sops
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.extraSpecialArgs = { inherit inputs; };
+            #   home-manager.users.charles = ./modules/daily/home.nix;
+            # }
 
           ];
         };
@@ -51,6 +55,7 @@
           modules = [
             ./homeserver/configuration.nix
             disko.nixosModules.disko
+            sops-nix.nixosModules.sops
           ];
         };
       };

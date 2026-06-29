@@ -30,7 +30,6 @@
       interface = {
         resolution = "1920x1080";
         branding = "feur";
-        brandingColor = 6;
       };
     };
   };

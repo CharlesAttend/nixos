@@ -1,0 +1,15 @@
+# This example uses YAML anchors which allows reuse of multiple keys 
+# without having to repeat yourself.
+# Also see https://github.com/Mic92/dotfiles/blob/d6114726d859df36ccaa32891c4963ae5717ef7f/nixos/.sops.yaml
+# for a more complex example.
+keys:
+  - &server_desktop age1ucd6s0uyvstmp3xclucnlpu2x7rh4jutftuur9vychf3xuemcugst5yr80
+  # - &server_hp-ina 
+  - &server_homeserver age1ljx59mhk0htqgk4fgksfssrjft6ru8ud2xx393mgawl6hzppad0s58ffl0
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *server_desktop
+      # - *server_hp-ina
+      - *server_homeserver

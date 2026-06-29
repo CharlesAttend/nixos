@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [./bugfixes.nix];
-  
+  imports = [ ./bugfixes.nix ];
+
   environment.systemPackages = with pkgs; [
     kitty
     vivaldi
@@ -11,7 +11,7 @@
     vlc
     #(pkgs.callPackage ./packages/stremio-linux-shell.nix { })
 
-    logseq
+    #logseq
     xournalpp
     anytype
     (pkgs.callPackage ./packages/sunsama.nix { })
@@ -32,7 +32,7 @@
     cura-appimage
 
     # nvim plugins
-    pkgs.nixfmt-rfc-style
+    nixfmt
   ];
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gcr-ssh-agent.enable = false; # Use program.ssh.start-agent
