@@ -9,6 +9,7 @@
     vscode
     gparted
     vlc
+    mixxx
     stremio-linux-shell
 
     #logseq
@@ -27,12 +28,13 @@
     bluetui
     ntfs3g
     android-tools
-    megasync
+    # megasync
     ente-auth
     cura-appimage
 
     # nvim plugins
     nixfmt
+    lazycommit
   ];
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gcr-ssh-agent.enable = false; # Use program.ssh.start-agent
@@ -52,6 +54,7 @@
     };
     printing.enable = true;
   };
+  services.playerctld.enable = false;
 
   hardware.graphics = {
     enable = true;

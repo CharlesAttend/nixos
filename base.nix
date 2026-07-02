@@ -108,7 +108,7 @@
       };
     };
   };
-
+  hardware.i2c.enable = true; # ddcutils 
   virtualisation.docker.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "poweroff";
