@@ -12,6 +12,9 @@
     rofi # picker
     rofi-calc
     rofimoji
+    wl-clipboard
+    wtype
+    
     hyprmon
     hyprpicker
     hyprshot
