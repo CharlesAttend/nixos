@@ -46,6 +46,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hp-ina/configuration.nix
+            sops-nix.nixosModules.sops
           ];
         };
 
