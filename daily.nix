@@ -12,7 +12,7 @@
     mixxx
     stremio-linux-shell
 
-    #logseq
+    logseq
     xournalpp
     anytype
     (pkgs.callPackage ./packages/sunsama.nix { })
