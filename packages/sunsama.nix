@@ -1,11 +1,15 @@
-{ appimageTools, fetchurl, lib }:
+{
+  appimageTools,
+  fetchurl,
+  lib,
+}:
 let
   pname = "sunsama";
   version = "3.4.6";
 
   src = fetchurl {
     url = "https://desktop.sunsama.com/linux/appImage/x64";
-    hash = "sha256-mJI4RViGQxEuogsTYIvB0hcpgZVaLfP3B2KLI+mHsPY=";
+    hash = "sha256-VMSe9JCoh9sb1QZKxijRRSEqHWE1u9D5cGI9lDnfmvo=";
   };
 
   appimageContents = appimageTools.extract {
