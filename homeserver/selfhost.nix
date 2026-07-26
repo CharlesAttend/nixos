@@ -57,15 +57,68 @@
   services.traefik = {
     enable = true;
     staticConfigOptions = {
+      entryPoints = {
+        web = {
+          address = ":80";
+          asDefault = true;
+          http.redirections.entrypoint = {
+            to = "websecure";
+            scheme = "https";
+          };
+        };
+
+        websecure = {
+          address = ":443";
+          asDefault = true;
+          http.tls.certResolver = "letsencrypt";
+        };
+      };
       certificatesResolvers.letsencrypt.acme = {
         email = "charles.vin@outlook.fr";
         dnschallenge.provider = "cloudflare";
       };
+      api.dashboard = true;
+      api.insecure = true;
+      accessLog = {
+        filePath = "${config.services.traefik.dataDir}/traefik_access.log";
+        format = "json";
+      };
+      log = {
+        level = "DEBUG";
+        filePath = "${config.services.traefik.dataDir}/traefik.log";
+        format = "json";
+      };
     };
-    # environmentFiles = sops.secrets.cloudflare-traefik.path;
+
+    dynamicConfigOptions.http = {
+      routers = {
+        hass = {
+          entryPoints = [ "websecure" ];
+          service = "hass";
+          rule = "Host(`hass.home.charles.vin`)";
+          tls.certResolver = "letsencrypt";
+        };
+        immich = {
+          entryPoints = [ "websecure" ];
+          service = "immich";
+          rule = "Host(`immich.home.charles.vin`)";
+          tls.certResolver = "letsencrypt";
+        };
+      };
+
+      services = {
+        hass.loadBalancer.servers = [ { url = "http://localhost:8123"; } ];
+        immich.loadBalancer.servers = [
+          { url = "http://localhost:${toString config.services.immich.port}"; }
+        ];
+      };
+    };
+    environmentFiles = [ config.sops.secrets.cloudflare-traefik.path ];
   };
   networking.firewall.allowedTCPPorts = [
     8123 # Homeassistant
+
+    8080 # Traefik dashboard
     80
     443
   ];
