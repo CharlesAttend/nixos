@@ -66,4 +66,15 @@
     nerd-fonts.lilex
     nerd-fonts.droid-sans-mono
   ];
+
+  programs.dconf.enable = true;
+  programs.dconf.profiles = {
+    user.databases = [
+      {
+        settings."org/gnome/desktop/interface".color-scheme = "prefer-light";
+      }
+    ];
+  };
+  qt.enable = true;
+
 }
