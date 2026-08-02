@@ -1,11 +1,11 @@
 { appimageTools, fetchurl, lib }:
 let
   pname = "notion-electron";
-  version = "2.0.0";
+  version = "2.3.0";
 
   src = fetchurl {
     url = "https://github.com/anechunaev/notion-electron/releases/download/v${version}/Notion_Electron-${version}-x86_64.AppImage";
-    hash = "sha256-AKDQ4/j+PianpK+9pXYEVaRXReiQFYgTLvSmcKD5f1M=";
+    hash = "sha256-mQ/SsER/fhjgWZa8ArhdlbtrRwCQeMuXdblaOMKZEoA=";
   };
 
   appimageContents = appimageTools.extract {
