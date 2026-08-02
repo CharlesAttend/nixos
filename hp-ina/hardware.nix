@@ -13,8 +13,10 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-intel" "v4l2loopback" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/49f6febe-643f-4ead-86b4-2ea1590a8e12";
