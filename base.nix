@@ -70,6 +70,7 @@
     wget
     curl
     unzip
+    jq
     ncdu
     killall
     ddcutil
