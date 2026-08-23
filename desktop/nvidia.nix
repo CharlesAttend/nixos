@@ -7,13 +7,19 @@
 }:
 
 {
-  boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-nvidia_gpu"];
+  boot.kernelModules = [
+    "nvidia"
+    "nvidia_modeset"
+    "nvidia_uvm"
+    "nvidia_drm"
+    "i2c-nvidia_gpu"
+  ];
   # Enable OpenGL
   hardware.graphics = {
-    extraPackages = with pkgs; [                                                                   
-      nvidia-vaapi-driver                                                                          
-      libvdpau-va-gl                                                                               
-    ];    
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      libvdpau-va-gl
+    ];
   };
 
   # Load nvidia drisver for Xorg and Wayland
@@ -24,8 +30,8 @@
     open = false;
     nvidiaSettings = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+
     powerManagement.enable = true;
   };
 }
