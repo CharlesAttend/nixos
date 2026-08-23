@@ -82,7 +82,6 @@
     ghostscript_headless # PDF render in nvim
 
     uv
-    python3
 
     btop
     zellij
@@ -97,8 +96,20 @@
     lsof # With opencode lazyvim plugin
     claude-code
   ];
-  services.xserver.enable = true;
 
+  # Python with uv only
+  environment = {
+    localBinInPath = true;
+  };
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+    ];
+  };
+
+  services.xserver.enable = true;
   services.xserver.xkb = {
     layout = "us_qwerty-fr";
     extraLayouts = {
@@ -109,7 +120,7 @@
       };
     };
   };
-  hardware.i2c.enable = true; # ddcutils 
+  hardware.i2c.enable = true; # ddcutils
   virtualisation.docker.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "poweroff";
