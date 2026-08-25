@@ -43,6 +43,7 @@
     autosuggestions.enable = true;
     enableCompletion = true;
     enableBashCompletion = true;
+    syntaxHighlighting.enable = true;
     histSize = 10000;
     ohMyZsh.enable = true;
     ohMyZsh.plugins = [
@@ -51,9 +52,25 @@
       "dotenv"
       "dirhistory"
       "uv"
+      "kubectl"
+      "timer"
     ];
     ohMyZsh.theme = "frisk";
-    syntaxHighlighting.enable = true;
+    shellAliases = {
+      ll = "ls -al";
+      update = "sudo nixos-rebuild switch";
+      harlequina = "harlequin  --theme monokai -a trino --host trino.2ia.d.sas.ina --port 443 --user cvin --require_auth password --password $(secret-tool liookup ldap password)";
+      btui = "bluetui";
+      nv = "nvim .";
+      vpnc = "secret-tool lookup ldap password | sudo openconnect --protocol=gp connexion.ina.fr --csd-wrapper /usr/lib/openconnect/hipreport.sh -u cvin --passwd-on-stdin";
+      fullpush = "git add * && git commit -m 'fullpush' && git push";
+      stfu = "shutdown now";
+      dark = "~/.config/yin_yang/dark-theme.sh";
+      light = "~/.config/yin_yang/light-theme.sh";
+      lgit = "lazygit";
+      k = "kubecolor";
+    };
+
   };
   programs.starship = {
     enable = true;
