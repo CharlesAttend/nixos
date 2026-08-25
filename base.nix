@@ -92,6 +92,7 @@
     killall
     ddcutil
     git
+    sops
 
     lazygit
     ripgrep
