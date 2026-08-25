@@ -10,6 +10,7 @@
   services.xserver.videoDrivers = [ "displaylink" ];
   # For gnome 
   systemd.services.dlm.wantedBy = [ "multi-user.target" ];
+  # For KDE
   systemd.services.displaylink-server = {
     enable = true;
     # Ensure it starts after udev has done its work
