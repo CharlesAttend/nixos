@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     kubectl
     kubelogin-oidc
+    kubecolor
     lens
     kubernetes-helm
 
