@@ -9,12 +9,9 @@
   programs.hyprlock.enable = true;
   environment.systemPackages = with pkgs; [
     dunst # Notification Daemon
-    rofi # picker
-    rofi-calc
-    rofimoji
     wl-clipboard
     wtype
-    
+
     hyprmon
     hyprpicker
     hyprshot
@@ -29,8 +26,8 @@
     brightnessctl
   ];
   # for nautilus to work
-  services.gvfs.enable = true; 
-  # Add hyprcursor theme to config 
+  services.gvfs.enable = true;
+  # Add hyprcursor theme to config
   # Optional, hint Electron apps to use Wayland:
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
