@@ -10,6 +10,7 @@
     ./taf.nix
     ./vpn_and_2fa.nix
     ./displaylink.nix
+    ./battery-notification.nix
   ];
   programs.nix-ld.enable = true;
   # swap esc capslock
