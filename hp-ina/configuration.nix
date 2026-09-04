@@ -25,5 +25,5 @@
   '';
   networking.hostName = "hp-ina";
 
-  system.stateVersion = "25.11"; # don't touch that bro 
+  system.stateVersion = "25.11"; # don't touch that bro
 }

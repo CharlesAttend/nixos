@@ -6,7 +6,7 @@ let
   }) { system = pkgs.stdenv.hostPlatform.system; };
 in
 {
-  environment.systemPackages = [pkgs_logseq.logseq]; # https://github.com/NixOS/nixpkgs/issues/535206#issuecomment-4818425933
+  environment.systemPackages = [ pkgs_logseq.logseq ]; # https://github.com/NixOS/nixpkgs/issues/535206#issuecomment-4818425933
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10" # logseq electron deprecation https://github.com/NixOS/nixpkgs/issues/528213
   ];
