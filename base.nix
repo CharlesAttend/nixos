@@ -102,6 +102,7 @@
     uv
 
     btop
+    iotop
     zellij
     pay-respects # fuck cmd
     usbutils # lsusb
