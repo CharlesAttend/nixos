@@ -22,6 +22,17 @@ appimageTools.wrapAppImage {
 
   src = appimageContents;
 
+  # The bundled Electron is too old for Wayland: with GDK_BACKEND unset GDK
+  # fails to get a display and the app dies with
+  # "Gtk-WARNING: cannot open display: :1". Force the X11 (Xwayland) backend.
+  profile = ''
+    export GDK_BACKEND=x11
+  '';
+
+  # bwrap does not expose the host /etc inside the FHS env, so `--chdir "$(pwd)"`
+  # aborts when the app is launched from anywhere under /etc (e.g. /etc/nixos).
+  chdirToPwd = false;
+
   extraInstallCommands = ''
     install -m 444 -D "${appimageContents}/authenticator 6.desktop" \
       $out/share/applications/trustbuilder.desktop
