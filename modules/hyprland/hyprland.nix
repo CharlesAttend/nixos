@@ -9,6 +9,7 @@
   programs.hyprlock.enable = true;
   environment.systemPackages = with pkgs; [
     dunst # Notification Daemon
+    libnotify
     wl-clipboard
     wtype
 
