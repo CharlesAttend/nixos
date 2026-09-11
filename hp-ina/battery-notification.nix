@@ -3,15 +3,18 @@
 {
   systemd.user.services."battery-low" = {
     enable = true;
-    description = "Notify user if battery is below 10%";
+    description = "Notify user if battery is below 30%";
     partOf = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = pkgs.writeShellScript "battery-low-notification" ''
-        if (( 30 >= $(${pkgs.lib.getExe pkgs.acpi} -b | head -n 1 | ${pkgs.lib.getExe pkgs.ripgrep} -o "\d+%" | ${pkgs.lib.getExe pkgs.ripgrep} -o "\d+")));
-        then ${pkgs.lib.getExe pkgs.pkgs.libnotify} --urgency=critical "low battery" "$(${pkgs.lib.getExe pkgs.acpi} -b | head -n 1 | ${pkgs.lib.getExe pkgs.ripgrep} -o "\d+%")";
-        else echo; fi;
+        bat=/sys/class/power_supply/BAT0
+        status="$(cat "$bat"/status)"
+        level="$(cat "$bat"/capacity)"
+        if [[ "$status" == "Discharging" ]] && (( level <= 30 ));
+        then ${pkgs.lib.getExe pkgs.libnotify} --urgency=critical "low battery" "$level%";
+        fi
       '';
     };
   };
