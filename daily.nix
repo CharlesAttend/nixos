@@ -45,6 +45,7 @@
   };
 
   services = {
+    playerctld.enable = true;
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
@@ -54,7 +55,6 @@
     };
     printing.enable = true;
   };
-  services.playerctld.enable = false;
 
   hardware.graphics = {
     enable = true;
