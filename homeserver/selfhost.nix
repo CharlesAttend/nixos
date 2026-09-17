@@ -7,26 +7,6 @@
 }:
 
 {
-  # Homeassistant
-  virtualisation.oci-containers = {
-    backend = "docker";
-    containers.homeassistant = {
-      volumes = [
-        "home-assistant:/config"
-        "/run/udev:/run/udev:ro"
-        "/dev:/dev"
-      ];
-      environment.TZ = "Europe/Berlin";
-      # Note: The image will not be updated on rebuilds, unless the version label changes
-      image = "ghcr.io/home-assistant/home-assistant:stable";
-      extraOptions = [
-        # Use the host network namespace for all socket
-        "--network=host"
-        "--device-cgroup-rule=c 188:* rmw"
-      ];
-    };
-  };
-
   services.paperless = {
     enable = true;
   };
@@ -71,26 +51,9 @@
         format = "json";
       };
     };
-
-    dynamicConfigOptions.http = {
-      routers = {
-        hass = {
-          entryPoints = [ "websecure" ];
-          service = "hass";
-          rule = "Host(`hass.home.charles.vin`)";
-          tls.certResolver = "letsencrypt";
-        };
-      };
-
-      services = {
-        hass.loadBalancer.servers = [ { url = "http://localhost:8123"; } ];
-      };
-    };
     environmentFiles = [ config.sops.secrets.cloudflare-traefik.path ];
   };
   networking.firewall.allowedTCPPorts = [
-    8123 # Homeassistant
-
     8080 # Traefik dashboard
     80
     443
