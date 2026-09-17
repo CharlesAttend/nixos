@@ -15,6 +15,7 @@
     ./disk-config.nix
     ./nvidia.nix
     ./modules/dawarich.nix
+    ./modules/immich.nix
   ];
   networking.hostName = "homeserver";
   # This value determines the NixOS release from which the default
