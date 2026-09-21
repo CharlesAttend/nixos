@@ -1,9 +1,19 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
+let
+  unstable = import inputs.nixpkgs-unstable { inherit (pkgs.stdenv.hostPlatform) system; };
+in
 {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+    package = unstable.hyprland;
+    portalPackage = unstable.xdg-desktop-portal-hyprland;
   };
   services.displayManager.sddm.enable = true;
   programs.hyprlock.enable = true;
