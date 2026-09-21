@@ -59,6 +59,7 @@
     shellAliases = {
       ll = "ls -al";
       update = "sudo nixos-rebuild switch";
+      updateb = "sudo nixos-rebuild boot";
       harlequina = "harlequin  --theme monokai -a trino --host trino.2ia.d.sas.ina --port 443 --user cvin --require_auth password --password $(secret-tool liookup ldap password)";
       btui = "bluetui";
       nv = "nvim .";
