@@ -8,6 +8,7 @@
     ./hardware.nix
     ./games.nix
     ./taf.nix
+    ./taf_imprimante.nix
     ./vpn_and_2fa.nix
     ./displaylink.nix
     ./battery-notification.nix
