@@ -49,12 +49,18 @@
           modules = [
             ./hp-ina/configuration.nix
             sops-nix.nixosModules.sops
+            catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.charles = ./modules/daily/home.nix;
+              home-manager.users.charles = {
+                imports = [
+                  ./modules/daily/home.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
             }
           ];
         };

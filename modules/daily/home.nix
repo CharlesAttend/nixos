@@ -3,7 +3,10 @@
 
   imports = [
     ./rofi.nix
+    ./kitty.nix
   ];
+  catppuccin.enable = true;
+  catppuccin.flavor = "latte";
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "charles";
