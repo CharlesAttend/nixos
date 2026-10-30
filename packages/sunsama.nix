@@ -9,7 +9,7 @@ let
 
   src = fetchurl {
     url = "https://desktop.sunsama.com/linux/appImage/x64";
-    hash = "sha256-VMSe9JCoh9sb1QZKxijRRSEqHWE1u9D5cGI9lDnfmvo=";
+    hash = "sha256-9f2n7OPK78OyFOt44ydK91KnUZ/WkkVqSZEZhoXUWe4=";
   };
 
   appimageContents = appimageTools.extract {
