@@ -26,4 +26,9 @@
       Unit = "battery-low.service";
     };
   };
+
+  # suspend-then-hibernate
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "1h";
+  };
 }
