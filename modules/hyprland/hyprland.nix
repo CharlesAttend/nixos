@@ -23,7 +23,7 @@ in
     wl-clipboard
     wtype
 
-    hyprmon
+    unstable.hyprmon
     hyprpicker
     hyprshot
     hyprcursor
