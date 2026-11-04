@@ -10,7 +10,10 @@
     ./boot.nix
   ];
   networking.hostName = "desktop";
-
+  systemd.sleep.settings.Sleep = {
+    # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#System_wakes_up_immediately_after_hibernating
+    HibernateMode = "shutdown"; # Might sleep that won't turn off desktop
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

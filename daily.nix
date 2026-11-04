@@ -20,7 +20,6 @@ in
     mixxx
     stremio-linux-shell
 
-    logseq
     xournalpp
     anytype
     (pkgs.callPackage ./packages/sunsama.nix { })
