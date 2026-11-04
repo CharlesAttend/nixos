@@ -24,7 +24,8 @@ in
     xournalpp
     anytype
     (pkgs.callPackage ./packages/sunsama.nix { })
-    (pkgs.callPackage ./packages/notion-electron.nix { })
+    # (pkgs.callPackage ./packages/notion-electron.nix { })
+    unstable.notion-electron
 
     vesktop
     signal-desktop
