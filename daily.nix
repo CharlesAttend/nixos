@@ -22,7 +22,7 @@ in
 
     xournalpp
     anytype
-    (pkgs.callPackage ./packages/sunsama.nix { })
+    sunsama
     # (pkgs.callPackage ./packages/notion-electron.nix { })
     unstable.notion-electron
 
