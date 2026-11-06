@@ -9,6 +9,7 @@
     };
     extraConfig = ''
       notify_on_cmd_finish invisible 10.0
-    '';
+      remember_window_size no 
+    ''; # remember_window_size https://github.com/kovidgoyal/kitty/issues/10442
   };
 }
