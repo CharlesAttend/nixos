@@ -29,7 +29,7 @@ in
     vesktop
     signal-desktop
     teams-for-linux
-    beeper
+    unstable.beeper
     spotify
 
     pavucontrol
