@@ -6,7 +6,10 @@
 }:
 
 let
-  unstable = import inputs.nixpkgs-unstable { inherit (pkgs.stdenv.hostPlatform) system; };
+  unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config.allowUnfree = true;
+  };
 in
 {
   imports = [ ./bugfixes.nix ];
@@ -18,10 +21,9 @@ in
     gparted
     vlc
     mixxx
-    stremio-linux-shell
 
     xournalpp
-    anytype
+    # anytype
     sunsama
     # (pkgs.callPackage ./packages/notion-electron.nix { })
     unstable.notion-electron
