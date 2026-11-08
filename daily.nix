@@ -33,6 +33,7 @@ in
     teams-for-linux
     unstable.beeper
     spotify
+    mattermost-desktop
 
     pavucontrol
     bluetui
