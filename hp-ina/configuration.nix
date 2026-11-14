@@ -14,6 +14,10 @@
     ./battery-notification.nix
   ];
   programs.nix-ld.enable = true;
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchExternalPower = "suspend";
+  };
   networking.hostName = "hp-ina";
 
   system.stateVersion = "25.11"; # don't touch that bro
