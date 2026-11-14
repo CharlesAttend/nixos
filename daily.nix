@@ -77,7 +77,10 @@ in
     nerd-fonts.lilex
     nerd-fonts.droid-sans-mono
   ];
-
+  programs.appimage = {
+    enable = true;
+    binfmt = true; # Allows running AppImages directly by double-clicking
+  };
   programs.dconf.enable = true;
   programs.dconf.profiles = {
     user.databases = [
