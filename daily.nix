@@ -47,6 +47,19 @@ in
     nixfmt
     lazycommit
   ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      pavucontrol = prev.pavucontrol.overrideAttrs (oldAttrs: {
+        postInstall = (oldAttrs.postInstall or "") + ''
+          substituteInPlace $out/share/applications/org.pulseaudio.pavucontrol.desktop \
+            --replace "Categories=AudioVideo;Audio;Mixer;GTK;Settings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;" "" \
+            --replace "Keywords=pavucontrol;PulseAudio;Microphone;Volume;Fade;Balance;Headset;Speakers;Headphones;Audio;Mixer;Output;Input;Devices;Playback;Recording;System Sounds;Sound Card;Settings;Preferences;" ""
+        '';
+      });
+    })
+  ];
+
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gcr-ssh-agent.enable = false; # Use program.ssh.start-agent
 
