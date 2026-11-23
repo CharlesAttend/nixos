@@ -18,6 +18,8 @@
     ./modules/immich.nix
     ./modules/hass.nix
     ./modules/traefik.nix
+    ./modules/dyndns.nix
+    ./modules/n8n.nix
   ];
   networking.hostName = "homeserver";
   # This value determines the NixOS release from which the default
